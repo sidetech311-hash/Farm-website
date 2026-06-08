@@ -331,16 +331,18 @@ a {
 .product-image,
 .about-image img {
     width: 100%;
-    height: 220px;
+    height: auto;
+    aspect-ratio: 4/3;
     object-fit: cover;
     border-radius: 18px;
     margin-bottom: 1.2rem;
+    max-height: 260px;
 }
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
 }
 
 .product-card {
@@ -370,6 +372,18 @@ a {
 
 .product-card p {
     color: var(--text-light);
+}
+
+/* Make product cards more compact on small screens */
+@media (max-width: 480px) {
+    .product-card {
+        padding: 1.25rem 1rem;
+        border-radius: 12px;
+    }
+
+    .product-image {
+        max-height: 180px;
+    }
 }
 
 /* Sustainability */
@@ -632,5 +646,17 @@ html {
     .contact-item i {
         width: 44px;
         height: 44px;
+    }
+
+    .nav-menu li {
+        margin-bottom: 1rem;
+    }
+
+    .nav-link {
+        font-size: 1.05rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
     }
 }
