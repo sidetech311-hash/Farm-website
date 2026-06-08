@@ -43,7 +43,44 @@ document.addEventListener('keydown', (e) => {
             if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
             document.body.classList.remove('menu-open');
         }
+        closeLightbox();
     }
+});
+
+const lightbox = document.getElementById('gallery-lightbox');
+const lightboxImage = lightbox?.querySelector('.lightbox-image');
+const lightboxCaption = lightbox?.querySelector('.lightbox-caption');
+const lightboxClose = lightbox?.querySelector('.lightbox-close');
+const galleryImages = document.querySelectorAll('.gallery-card img');
+
+function openLightbox(src, alt) {
+    if (!lightbox || !lightboxImage || !lightboxCaption) return;
+    lightboxImage.src = src;
+    lightboxImage.alt = alt;
+    lightboxCaption.textContent = alt;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+}
+
+function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    if (lightboxImage) {
+        lightboxImage.src = '';
+        lightboxImage.alt = '';
+    }
+}
+
+galleryImages.forEach(img => {
+    img.addEventListener('click', () => {
+        openLightbox(img.src, img.alt || 'Farm photo');
+    });
+});
+
+lightboxClose?.addEventListener('click', closeLightbox);
+lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
 });
 
 if (form) {
