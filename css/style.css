@@ -101,7 +101,7 @@ a {
 .hero {
     min-height: 100vh;
     background: linear-gradient(135deg, rgba(45, 106, 79, 0.85), rgba(82, 183, 136, 0.75)), 
-                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600') center/cover;
+                url('../images/hero.jpg') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
