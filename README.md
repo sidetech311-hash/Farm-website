@@ -31,7 +31,19 @@ git branch -M main
 git push -u origin main
 ```
 
-3. If you want automatic GitHub Pages deployment, keep the included workflow in `.github/workflows/pages.yml`.
+3. A `CNAME` file is included in this repo to configure the custom domain `ddbfarms.com`.
+4. In GitHub, go to `Settings > Pages` and verify the site is published from the `main` branch and `/<root>` folder.
+
+## Connect `ddbfarms.com`
+
+1. Confirm the `CNAME` file contains exactly:
+   ```
+ddbfarms.com
+```
+2. In your domain registrar, set DNS records:
+   - `A` record for `@` to GitHub Pages IPs: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - `CNAME` record for `www` to `sidetech311-hash.github.io.`
+3. GitHub Pages should provision HTTPS automatically after DNS updates.
 
 ## Deploy to Netlify
 
@@ -42,7 +54,8 @@ git push -u origin main
 
 ## Contact form setup
 
-The contact form currently uses Formsubmit.co. Replace `your-email@example.com` in `contact.html` with your real email address or a custom Formsubmit endpoint.
+The contact form uses Formsubmit.co and is configured to send messages to `info@ddbfarms.com`.
+If you want to use a different email or a custom Formsubmit endpoint, update the `action` attribute in `contact.html`.
 
 ## Notes
 
